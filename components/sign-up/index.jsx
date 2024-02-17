@@ -4,10 +4,11 @@ import {
     Form,
     Input,
     Button,
-    Select
+    Select,
+    Divider
 } from 'antd';
 import Image from 'next/image'
-import { MailOutlined, LockOutlined, EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons'
+import { MailOutlined, LockOutlined, EyeOutlined, EyeInvisibleOutlined, GoogleOutlined, FacebookOutlined } from '@ant-design/icons'
 import countries from '@/json/countries'
 
 const { Item } = Form
@@ -16,8 +17,8 @@ const { signupForm } = Form.useForm
 const SignUp = ()=>{
     const [passwordType, setPasswordType] = useState("password")
 
-    const signup = (values)=>{
-        signupForm.resetFields()
+    const signup = ()=>{
+        signupForm.resetFields();
     }
 
     const CourseCode = ()=>{
@@ -35,8 +36,8 @@ const SignUp = ()=>{
     }
 
     return (
-        <div className="grid grid-cols-2">
-            <div className='flex flex-col items-center justify-center min-h-screen bg-[#ECE9EC] gap-8'>
+        <div className="grid md:grid-cols-2">
+            <div className='flex flex-col items-center justify-center md:min-h-screen bg-[#ECE9EC] gap-8'>
                 <div className='flex flex-col items-center gap-2'>
                     <h1 className='text-4xl font-bold'>Edex</h1>
                     <p className='text-dm text-[grey]'>Let's learn something new today!</p>
@@ -48,7 +49,7 @@ const SignUp = ()=>{
                     height={400}
                 />
             </div>
-            <div className='flex flex-col p-16 gap-8'>
+            <div className='flex flex-col md:p-16 p-8 gap-8'>
                 <div className='flex flex-col items-center gap-2'>
                     <h1 className='text-3xl font-bold'>Sign up for your account!</h1>
                     <p className='text-sm text-[grey]'>Nice to see you! Please Sign up with your account</p>
@@ -117,9 +118,27 @@ const SignUp = ()=>{
                             htmlType="submit"
                             type="primary"
                             className="bg-[blue] rounded-none"
-                        >signup</Button>
+                        >Register Now</Button>
                     </Item>
                 </Form>
+
+                <Divider>OR</Divider>
+
+                <div className='flex gap-4'>
+                    <Button 
+                        icon={<GoogleOutlined />}
+                        className='bg-[#6092E8] w-full' 
+                        type='primary'
+                        size='large'
+                    >signup with Google</Button>
+
+                    <Button 
+                        icon={<FacebookOutlined />}
+                        className='bg-[#6092E8] w-full' 
+                        type='primary'
+                        size='large'
+                    >signup with Facebook</Button>
+                </div>
             </div>
         </div>
     )
