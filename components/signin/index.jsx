@@ -98,7 +98,7 @@ const SignIn = ()=>{
 
                 <div className="flex items-center justify-center gap-2">
                     <span>Don't have an account?</span>
-                    <Link href="signup" className="text-[blue]">Signup</Link>
+                    <Link href="/signup" className="text-[blue]">Signup</Link>
                 </div>
             </div>
         </div>
