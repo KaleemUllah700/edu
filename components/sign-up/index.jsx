@@ -5,9 +5,11 @@ import {
     Input,
     Button,
     Select,
-    Divider
+    Divider,
+    Checkbox
 } from 'antd';
 import Image from 'next/image'
+import Link from 'next/link'
 import { MailOutlined, LockOutlined, EyeOutlined, EyeInvisibleOutlined, GoogleOutlined, FacebookOutlined } from '@ant-design/icons'
 import countries from '@/json/countries'
 
@@ -112,6 +114,12 @@ const SignUp = ()=>{
                             />}        
                         />
                     </Item>
+                    <Item name="Terms and Conditions" valuePropName='checked'>
+                        <Checkbox className='flex'>
+                            <span className='mr-2'>I accept</span>
+                            <Link href="/terms-and-conditions" className='text-[blue]'>Terms and Conditions</Link>
+                        </Checkbox>
+                    </Item>
                     <Item>
                         <Button
                             size="large"
@@ -138,6 +146,10 @@ const SignUp = ()=>{
                         type='primary'
                         size='large'
                     >signup with Facebook</Button>
+                </div>
+                <div className="flex items-center justify-center gap-2">
+                    <span>Already have an account?</span>
+                    <Link href="signin" className="text-[blue]">sign in here</Link>
                 </div>
             </div>
         </div>
