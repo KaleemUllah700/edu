@@ -59,7 +59,7 @@ const CmsLayout = ({children, app}) => {
           }}
         >
           <span className='capitalize'>
-            {app.title} Version: {app.version} ©{new Date().getFullYear()}
+            {app && app.title} Version: {app && app.version} ©{new Date().getFullYear()}
          </span>
         </Footer>
       </Layout>
