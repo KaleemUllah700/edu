@@ -1,9 +1,17 @@
-import { Layout } from 'antd'
-const { Content, Footer, Sider } = Layout
-const Home = () => {
+"use client"
+import { Layout, Menu, theme } from 'antd'
+
+const { Header, Content, Footer, Sider } = Layout;
+
+const CmsLayout = ({children, app}) => {
+  const {
+    token: { colorBgContainer, borderRadiusLG },
+  } = theme.useToken();
+
+  const items = []
 
   return (
-    <Layout>
+    <Layout hasSider>
       <Sider
         style={{
           overflow: 'auto',
@@ -14,9 +22,20 @@ const Home = () => {
           bottom: 0,
         }}
       >
+        <Menu theme="dark" items={items} />;
+       
       </Sider>
-      <Layout>
-
+      <Layout
+        style={{
+          marginLeft: 200,
+        }}
+      >
+        <Header
+          style={{
+            padding: 0,
+            background: colorBgContainer,
+          }}
+        />
         <Content
           style={{
             margin: '24px 16px 0',
@@ -27,9 +46,11 @@ const Home = () => {
             style={{
               padding: 24,
               textAlign: 'center',
+              background: colorBgContainer,
+              borderRadius: borderRadiusLG,
             }}
           >
-            <p>Our content</p>
+            {children}
           </div>
         </Content>
         <Footer
@@ -37,10 +58,58 @@ const Home = () => {
             textAlign: 'center',
           }}
         >
-          edex © {new Date().getFullYear()} Created by edex company
+          <span className='capitalize'>
+            {app.title} Version: {app.version} ©{new Date().getFullYear()}
+         </span>
         </Footer>
       </Layout>
     </Layout>
   );
-};
-export default Home;
+}
+
+export default CmsLayout
+
+/**
+ * Datasets for menu
+ * const items = [
+    {
+        label: 'Dashboard',
+        key: 'dashboard',
+        icon: <DashboardOutlined />
+    },
+    {
+        label: 'Settings',
+        key: 'settings',
+        icon: <SettingOutlined />
+    },
+    {
+        label: 'Authentication',
+        key: 'authentication',
+        children: [
+            {
+                label: 'Register',
+                key: 'register',
+                children: [
+                    {
+                        label: 'Testing1',
+                        key: 'testing1',
+                        icon: <HomeOutlined />
+                    },
+                    {
+                        label: 'Testing2',
+                        key: 'testing2',
+                        icon: <EditOutlined />
+                    }
+                ],
+                icon: <UserOutlined />
+            },
+            {
+                label: 'Signin',
+                key: 'signin',
+                icon: <FormOutlined />
+            }
+        ],
+        icon: <LoginOutlined />
+    }
+  ]
+ */
