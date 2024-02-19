@@ -1,11 +1,15 @@
-"use client"
-import Layout from "@/components/shared/layout/cms";
+import CmsLayout from '@/components/shared/layout/cms'
 
 const Home = ()=>{
+  const app = {
+    title: process.env.npm_package_name,
+    version: process.env.npm_package_version
+  }
+
   return (
-    <div>
-        <Layout />
-    </div>
+    <CmsLayout app={app}>
+      <h1>My Content</h1>
+    </CmsLayout>
   )
 }
 
