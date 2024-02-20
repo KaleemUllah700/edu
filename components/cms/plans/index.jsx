@@ -4,7 +4,7 @@ import { useState } from "react"
 import CmsLayout from "@/components/shared/layout/cms"
 
 import {
-    Button, Drawer, Form, Input, Select, TextArea
+    Button, Drawer, Form, Input, Select, Table
 } from 'antd'
 import {
     PlusCircleOutlined
@@ -14,6 +14,37 @@ const Plans = ()=>{
 
     const [openDrawer, setOpenDrawer] = useState(false)
 
+    const columns = [
+        {
+            title: 'Plan',
+            dataIndex: 'title',
+            key: 'title'
+        },
+        {
+            title:'Charged on',
+            dataIndex: 'interval',
+            key: 'interval'
+        },
+        {
+            title: 'Amount',
+            dataIndex: 'amount',
+            key: 'amount'
+        },
+        {
+            title: 'Created At',
+            dataIndex: 'createdAt',
+            key: 'createdAt'
+        }
+    ]
+
+    const data = [
+        {
+            title: 'starter',
+            interval: 1,
+            amount: 1000,
+            createdAt: new Date().toDateString()
+        }
+    ]
 
 
     return (
@@ -25,6 +56,10 @@ const Plans = ()=>{
                 icon={<PlusCircleOutlined />}
                 onClick={()=>setOpenDrawer(true)}
             >Add plan</Button>
+            <Table 
+                dataSource={data}
+                columns={columns}
+            />
             <Drawer
                 title="New Plan"
                 width={500}
@@ -98,7 +133,6 @@ const Plans = ()=>{
                             >Create Plan</Button>
 
                             <Button
-                                htmlType="submit"
                                 type="primary"
                                 className="bg-indigo-600 rounded-sm"
                                 size="large"
