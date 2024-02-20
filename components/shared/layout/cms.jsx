@@ -1,14 +1,23 @@
 "use client"
-import { Layout, Menu, theme } from 'antd'
-
+import { Breadcrumb, Layout, Menu, theme } from 'antd'
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 const { Header, Content, Footer, Sider } = Layout;
 
 const CmsLayout = ({children, app}) => {
+ const pathname = usePathname();
+
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
   const items = []
+
+  const getLink = (index)=>{
+    const Router = pathname.split("/").slice(1);
+    const tmp = Router.slice(0, index+1);
+    return "/"+tmp.join("/")
+  }
 
   return (
     <Layout hasSider>
@@ -36,6 +45,17 @@ const CmsLayout = ({children, app}) => {
             background: colorBgContainer,
           }}
         />
+        <div>
+          <Breadcrumb>
+            {
+              pathname.split("/").slice(1).map((item, index)=>(
+                <Breadcrumb.Item key={index}>
+                  <Link href={getLink(index)}>{item}</Link>
+                </Breadcrumb.Item>
+              ))
+            }
+          </Breadcrumb>
+        </div>
         <Content
           style={{
             margin: '24px 16px 0',
@@ -59,7 +79,7 @@ const CmsLayout = ({children, app}) => {
           }}
         >
           <span className='capitalize'>
-            {app.title} Version: {app.version} ©{new Date().getFullYear()}
+            Edux Version: 1.0.0 ©{new Date().getFullYear()}
          </span>
         </Footer>
       </Layout>
