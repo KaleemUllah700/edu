@@ -22,8 +22,8 @@ const Plans = ()=>{
         },
         {
             title:'Charged on',
-            dataIndex: 'interval',
-            key: 'interval'
+            key: 'interval',
+            render:(_,item)=>("every "+`${item.interval} ${item.period}`)
         },
         {
             title: 'Amount',
@@ -41,7 +41,22 @@ const Plans = ()=>{
         {
             title: 'starter',
             interval: 1,
+            period:'months',
             amount: 1000,
+            createdAt: new Date().toDateString()
+        },
+        {
+            title: 'economy',
+            interval: 4,
+            period:'weeks',
+            amount: 5000,
+            createdAt: new Date().toDateString()
+        },
+        {
+            title: 'primuim',
+            interval: 3,
+            period:'years',
+            amount: 10000,
             createdAt: new Date().toDateString()
         }
     ]
