@@ -67,7 +67,7 @@ const Plans = ()=>{
             <Button 
                 size="large" 
                 type="primary"
-                className="bg-indigo-600"
+                className="bg-indigo-600 rounded-none"
                 icon={<PlusCircleOutlined />}
                 onClick={()=>setOpenDrawer(true)}
             >Add plan</Button>
