@@ -2,13 +2,16 @@
 import { useState } from "react"
 
 import CmsLayout from "@/components/shared/layout/cms"
+import Currency from "@/components/shared/currency"
 
 import {
     Button, Drawer, Form, Input, Select, Table
 } from 'antd'
+
 import {
     PlusCircleOutlined
 } from '@ant-design/icons'
+
 
 const Plans = ()=>{
 
@@ -27,8 +30,8 @@ const Plans = ()=>{
         },
         {
             title: 'Amount',
-            dataIndex: 'amount',
-            key: 'amount'
+            key: 'amount',
+            render: (_,item)=>(<Currency>{item.amount}</Currency>)
         },
         {
             title: 'Created At',
