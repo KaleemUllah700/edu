@@ -1,4 +1,4 @@
-import CmsLayout from '@/components/shared/layout/cms'
+import ErpLayout from '@/components/shared/layout/erp'
 
 const Home = ()=>{
   const app = {
@@ -7,9 +7,9 @@ const Home = ()=>{
   }
 
   return (
-    <CmsLayout app={app}>
+    <ErpLayout app={app}>
       <h1>My Content</h1>
-    </CmsLayout>
+    </ErpLayout>
   )
 }
 
